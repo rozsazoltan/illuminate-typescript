@@ -1,0 +1,67 @@
+{
+  "name": "rozsazoltan/illuminate-typescript",
+  "description": "Generates TypeScript interfaces from Laravel-based models",
+  "keywords": [
+    "typescript",
+    "php",
+    "laravel",
+    "typescript-interfaces",
+    "models",
+    "laravel-models",
+    "typescript-generator",
+    "php-to-typescript",
+    "interfaces",
+    "code-generation"
+  ],
+  "homepage": "https://github.com/rozsazoltan/illuminate-typescript",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Zoltán Rózsa",
+      "homepage": "https://github.com/rozsazoltan",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.2|^8.3",
+    "illuminate/contracts": "^11.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^9.0",
+    "pestphp/pest": "^3.0"
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Rose\\IlluminateTypeScript\\Foundation\\IlluminateTypeScriptServiceProvider"
+      ]
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Rose\\IlluminateTypeScript\\": "src/Illuminate/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Rose\\IlluminateTypeScript\\Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "post-autoload-dump": [
+      "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+      "@php artisan package:discover --ansi"
+    ],
+    "test": [
+      "./vendor/bin/pest"
+    ]
+  }
+}
